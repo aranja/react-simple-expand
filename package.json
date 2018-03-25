@@ -1,0 +1,53 @@
+{
+  "name": "react-simple-expand",
+  "version": "0.0.0-semantically-released",
+  "description":
+    "React Component for creating accessible and performant expandable UI",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "build": "kcd-scripts build",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:update": "npm test -- --updateSnapshot --coverage",
+    "validate": "kcd-scripts validate",
+    "setup": "npm install && npm run validate -s",
+    "precommit": "kcd-scripts precommit",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o docs"
+  },
+  "files": ["dist"],
+  "keywords": [],
+  "author": {
+    "name": "Aranja",
+    "email": "aranja@aranja.com",
+    "url": "https://aranja.com"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "prop-types": ">=15",
+    "react": ">=15"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.3.15",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "kcd-scripts": "^0.36.1",
+    "prop-types": " ^15.6.1",
+    "react": "^16.2.0",
+    "react-component-component": "^1.2.1",
+    "react-dom": "^16.2.0"
+  },
+  "eslintIgnore": ["node_modules", "coverage", "dist", "docs"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aranja/react-simple-expand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aranja/react-simple-expand/issues"
+  },
+  "homepage": "https://github.com/aranja/react-simple-expand#readme"
+}
