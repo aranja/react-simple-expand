@@ -29,23 +29,24 @@ class ReactSimpleExpand extends Component {
     return this.props.id || this.internalId_
   }
 
-  componentWillReceiveProps({isOpen}) {
-    if (this.props.isOpen !== isOpen) {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isOpen !== nextProps.isOpen) {
       // Prepare the animation by setting the current height as max height.
-      this.setState({maxHeight: `${this.root.offsetHeight}px`}, () => {
-        // Set a transition after specifying the starting point (height)
-        // of the animation.
-        this.setState({isAnimating: true}, () => {
+      this.setState(
+        {isAnimating: true, maxHeight: `${this.root.offsetHeight}px`},
+        () => {
+          // Set a transition after specifying the starting point (height)
+          // of the animation.
           // Calculate the height of the root at the end state.
-          const contentHeight = isOpen ? this.content.offsetHeight : 0
+          const contentHeight = nextProps.isOpen ? this.content.offsetHeight : 0
           this.setState(
             {
               maxHeight: `${this.tab.offsetHeight + contentHeight}px`,
             },
             this.onComplete,
           )
-        })
-      })
+        },
+      )
     }
   }
 
