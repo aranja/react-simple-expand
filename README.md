@@ -168,6 +168,14 @@ is all as follows:
 @returns {Object} - the props that you need to render the component.
 ```
 
+_Note:_ If you are rendering a composite component, that component
+will need a prop called `refKey`. The refKey is used to forward a
+required ref function that ReactSimpleExpand uses internally to
+the root DOM element of the composite component. Commonly, folks
+call this `innerRef`. So you'd call:
+`getRootProps({ refKey: 'innerRef' })` and your composite component
+would forward like: `<div ref={props.innerRef} />`
+
 #### getRootProps()
 
 #### getHeaderProps()
