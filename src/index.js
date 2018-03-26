@@ -20,7 +20,7 @@ class ReactSimpleExpand extends Component {
 
   state = {
     isAnimating: false,
-    maxHeight: '',
+    height: '',
   }
 
   internalId_ = generateId()
@@ -33,7 +33,7 @@ class ReactSimpleExpand extends Component {
     if (this.props.isOpen !== nextProps.isOpen) {
       // Prepare the animation by setting the current height as max height.
       this.setState(
-        {isAnimating: true, maxHeight: `${this.root.offsetHeight}px`},
+        {isAnimating: true, height: `${this.root.offsetHeight}px`},
         () => {
           // Set a transition after specifying the starting point (height)
           // of the animation.
@@ -41,7 +41,7 @@ class ReactSimpleExpand extends Component {
           const contentHeight = nextProps.isOpen ? this.content.offsetHeight : 0
           this.setState(
             {
-              maxHeight: `${this.tab.offsetHeight + contentHeight}px`,
+              height: `${this.tab.offsetHeight + contentHeight}px`,
             },
             this.onComplete,
           )
@@ -54,7 +54,7 @@ class ReactSimpleExpand extends Component {
     const {duration = 0} = this.props
 
     setTimeout(() => {
-      this.setState({isAnimating: false, maxHeight: ''})
+      this.setState({isAnimating: false, height: ''})
     }, duration)
   }
 
@@ -81,8 +81,8 @@ class ReactSimpleExpand extends Component {
       role: 'tabpanel',
       style: {
         overflow: this.state.isAnimating ? 'hidden' : '',
-        maxHeight: this.state.maxHeight,
-        transition: `max-height ${this.props.duration}ms`,
+        height: this.state.height,
+        transition: `height ${this.props.duration}ms`,
       },
     })
 
@@ -111,13 +111,13 @@ class ReactSimpleExpand extends Component {
 
   render() {
     const {render, children, isOpen} = this.props
-    const {isAnimating, maxHeight} = this.state
+    const {isAnimating, height} = this.state
     const renderFunction = render || children || noop
 
     return renderFunction({
       isAnimating,
       isOpen,
-      maxHeight,
+      height,
       getRootProps: this.getRootProps,
       getHeaderProps: this.getHeaderProps,
       getContentProps: this.getContentProps,
