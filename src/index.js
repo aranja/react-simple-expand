@@ -59,9 +59,7 @@ class ReactSimpleExpand extends Component {
   }
 
   onToggle = event => {
-    if (!this.state.isAnimating) {
-      this.props.onToggle(event)
-    }
+    this.props.onToggle(event)
   }
 
   rootRef = element => {
