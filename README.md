@@ -25,7 +25,8 @@ We create similar info panels and accordion components that collapse and expand,
 
 ## This solution
 
-This is WAI-ARIA compliant React component. It controls how panels/accordions/etc collapse and expand. ReactSimpleExpand uses render props to reduce overhead and give you flexibility in styling.
+This is a WAI-ARIA compliant React component. It controls how panels/accordions/etc collapse and
+expand. ReactSimpleExpand uses render props to reduce overhead and give you flexibility in styling.
 
 ## Table of Contents
 
@@ -136,7 +137,7 @@ duration: PropTypes.number
 
 If a value is supplied, the component will animate the toggle.
 
-> Note: This API is likly to change.
+> Note: This API is likely to change.
 
 ### id
 
