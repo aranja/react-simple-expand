@@ -23,9 +23,4 @@ export const createGetter = (props, defaultProps) => {
   return composedProps
 }
 
-export const generateId = () =>
-  `r${Math.random()
-    .toString(36)
-    .slice(2)}`
-
 export const noop = () => {}

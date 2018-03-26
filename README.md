@@ -37,10 +37,10 @@ expand. ReactSimpleExpand uses render props to reduce overhead and give you flex
 * [Installation](#installation)
 * [Usage](#usage)
 * [Props](#props)
+  * [id `required`](#id-required)
   * [isOpen](#isopen)
   * [onToggle](#ontoggle)
   * [duration](#duration)
-  * [id](#id)
 * [Render Prop](#render-prop)
   * [Prop Getters](#prop-getters)
   * [State](#state)
@@ -111,6 +111,14 @@ const App = () => (
 
 ## Props
 
+### id `required`
+
+```js
+id: PropTypes.string.isRequired
+```
+
+Unique html id.
+
 ### isOpen
 
 ```js
@@ -138,15 +146,6 @@ duration: PropTypes.number
 If a value is supplied, the component will animate the toggle.
 
 > Note: This API is likely to change.
-
-### id
-
-```js
-duration: PropTypes.string
-```
-
-Supply a custom id to the content container. We need to pass this as prop
-because we use use it in more than one place.
 
 ## Render Prop
 

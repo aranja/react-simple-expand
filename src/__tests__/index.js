@@ -5,7 +5,7 @@ import {noop} from '../utils'
 
 test('when open, the header should have [aria-expanded=true]', () => {
   const header = mount(
-    <ReactSimpleExpand isOpen onToggle={noop}>
+    <ReactSimpleExpand id="test" isOpen onToggle={noop}>
       {({getHeaderProps}) => <div {...getHeaderProps()} />}
     </ReactSimpleExpand>,
   ).getDOMNode()
@@ -15,7 +15,7 @@ test('when open, the header should have [aria-expanded=true]', () => {
 
 test('when closed, the header should have [aria-expanded=false]', () => {
   const header = mount(
-    <ReactSimpleExpand onToggle={noop}>
+    <ReactSimpleExpand id="test" onToggle={noop}>
       {({getHeaderProps}) => <div {...getHeaderProps()} />}
     </ReactSimpleExpand>,
   ).getDOMNode()
@@ -23,25 +23,7 @@ test('when closed, the header should have [aria-expanded=false]', () => {
   expect(header.getAttribute('aria-expanded')).toBe('false')
 })
 
-test('the header has an [aria-controls=id] == content[id]', () => {
-  const wrapper = mount(
-    <ReactSimpleExpand onToggle={noop}>
-      {({getHeaderProps, getContentProps}) => (
-        <div>
-          <div {...getHeaderProps()} data-header />
-          <div {...getContentProps()} data-content />
-        </div>
-      )}
-    </ReactSimpleExpand>,
-  )
-  const header = wrapper.find('[data-header]').getDOMNode()
-  const contentId = wrapper.find('[data-content]').getDOMNode().id
-
-  expect(contentId).toBeDefined()
-  expect(header.getAttribute('aria-controls')).toBe(contentId)
-})
-
-test('allow custom ids', () => {
+test('the header should control content with given id', () => {
   const myCustomId = 'custom-id'
   const wrapper = mount(
     <ReactSimpleExpand onToggle={noop} id={myCustomId}>
@@ -54,8 +36,8 @@ test('allow custom ids', () => {
     </ReactSimpleExpand>,
   )
   const header = wrapper.find('[data-header]').getDOMNode()
-  const contentId = wrapper.find('[data-content]').getDOMNode().id
+  const content = wrapper.find('[data-content]').getDOMNode()
 
-  expect(contentId).toBe(myCustomId)
-  expect(header.getAttribute('aria-controls')).toBe(contentId)
+  expect(content.id).toBe(myCustomId)
+  expect(header.getAttribute('aria-controls')).toBe(myCustomId)
 })

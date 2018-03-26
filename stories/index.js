@@ -29,6 +29,7 @@ storiesOf('ReactSimpleExpand', module)
     <Component initialState={{open: false}}>
       {({state, setState}) => (
         <ReactSimpleExpand
+          id="test"
           onToggle={() => setState(({open}) => ({open: !open}))}
           isOpen={state.open}
           render={({getRootProps, getHeaderProps, getContentProps}) => (
@@ -52,6 +53,7 @@ storiesOf('ReactSimpleExpand', module)
     <Component initialState={{open: false}}>
       {({state, setState}) => (
         <ReactSimpleExpand
+          id="test"
           onToggle={() => setState(({open}) => ({open: !open}))}
           isOpen={state.open}
           duration={500}
@@ -83,6 +85,7 @@ storiesOf('Accordion', module).add('simple', () => (
       accordionItems.map(({title, description}) => (
         <ReactSimpleExpand
           key={title}
+          id={title.toLowerCase()}
           onToggle={() => setState({open: title})}
           isOpen={title === state.open}
           duration={300}

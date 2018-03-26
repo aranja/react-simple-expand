@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import PropTypes from 'prop-types'
-import {composeFunctions, createGetter, generateId, noop} from './utils'
+import {composeFunctions, createGetter, noop} from './utils'
 
 const OUT_OF_FLOW = {
   bottom: '100%',
@@ -9,23 +9,17 @@ const OUT_OF_FLOW = {
 
 class ReactSimpleExpand extends Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     onToggle: PropTypes.func,
     render: PropTypes.func,
     children: PropTypes.func,
     isOpen: PropTypes.bool,
-    id: PropTypes.string,
     duration: PropTypes.number,
   }
 
   state = {
     isAnimating: false,
     height: '',
-  }
-
-  internalId_ = generateId()
-
-  get internalId() {
-    return this.props.id || this.internalId_
   }
 
   componentWillReceiveProps(nextProps) {
@@ -87,7 +81,7 @@ class ReactSimpleExpand extends Component {
 
   getHeaderProps = ({ref, onToggle, ...props} = {}) =>
     createGetter(props, {
-      'aria-controls': this.internalId,
+      'aria-controls': this.props.id,
       'aria-expanded': Boolean(this.props.isOpen),
       onClick: composeFunctions(onToggle, this.onToggle),
       ref: composeFunctions(ref, this.headerRef),
@@ -95,13 +89,13 @@ class ReactSimpleExpand extends Component {
     })
 
   getContentProps = ({ref, ...props} = {}) => {
-    const isActive = !(this.props.isOpen || this.state.isAnimating)
+    const isClosed = !(this.props.isOpen || this.state.isAnimating)
     const defaultProps = {
       ref: composeFunctions(ref, this.contentRef),
-      id: this.internalId,
+      id: this.props.id,
     }
 
-    if (isActive) {
+    if (isClosed) {
       defaultProps.style = OUT_OF_FLOW
     }
 
