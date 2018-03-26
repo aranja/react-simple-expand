@@ -4,7 +4,6 @@ import {composeFunctions, createGetter, generateId, noop} from './utils'
 
 const OUT_OF_FLOW = {
   bottom: '100%',
-  pointerEvents: 'none',
   position: 'absolute',
 }
 
@@ -80,7 +79,7 @@ class ReactSimpleExpand extends Component {
       ref: composeFunctions(ref, this.rootRef),
       role: 'tabpanel',
       style: {
-        overflow: this.state.isAnimating ? 'hidden' : '',
+        overflow: 'hidden',
         height: this.state.height,
         transition: `height ${this.props.duration}ms`,
       },
