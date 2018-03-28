@@ -3,13 +3,15 @@
   "version": "0.0.0-semantically-released",
   "description":
     "React Component for creating accessible and performant expandable UI",
-  "main": "dist/index.js",
+  "main": "dist/react-simple-expand.cjs.js",
+  "jsnext:main": "dist/react-simple-expand.esm.js",
+  "module": "dist/react-simple-expand.esm.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
   "scripts": {
-    "build": "kcd-scripts build",
+    "build": "kcd-scripts build --bundle",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:update": "npm test -- --updateSnapshot --coverage",
