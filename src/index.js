@@ -71,7 +71,6 @@ class ReactSimpleExpand extends Component {
     createGetter(props, {
       onTransitionEnd: composeFunctions(onTransitionEnd, this.onTransitionEnd),
       ref: composeFunctions(ref, this.rootRef),
-      role: 'tabpanel',
       style: {
         overflow: 'hidden',
         height: this.state.height,
@@ -85,7 +84,6 @@ class ReactSimpleExpand extends Component {
       'aria-expanded': Boolean(this.props.isOpen),
       onClick: composeFunctions(onToggle, this.onToggle),
       ref: composeFunctions(ref, this.headerRef),
-      role: 'tab',
     })
 
   getContentProps = ({ref, ...props} = {}) => {
