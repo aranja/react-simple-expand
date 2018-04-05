@@ -67,9 +67,8 @@ class ReactSimpleExpand extends Component {
     this.content = element
   }
 
-  getRootProps = ({ref, onTransitionEnd, ...props} = {}) =>
+  getRootProps = ({ref, ...props} = {}) =>
     createGetter(props, {
-      onTransitionEnd: composeFunctions(onTransitionEnd, this.onTransitionEnd),
       ref: composeFunctions(ref, this.rootRef),
       style: {
         overflow: 'hidden',
